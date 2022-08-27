@@ -16,7 +16,7 @@ arr1.sort((a, b) => a.localeCompare(b, 'en'))
 
 let tick = 0;
 
-function findIndex(arr: Array<any>, value: any, fromIndex: number, toIndex: number): number {
+function binarySearch(arr: Array<any>, value: any, fromIndex: number, toIndex: number): number {
     tick++;
     
     if (fromIndex > toIndex) return -1;
@@ -40,11 +40,11 @@ function findIndex(arr: Array<any>, value: any, fromIndex: number, toIndex: numb
     else if (value == fromValue) return fromIndex;
     else if (value == toValue) return toIndex;
     else if ((value as string).localeCompare(breakpointValue) > 0) {
-        return findIndex(arr, value, breakpointIndex, toIndex)
+        return binarySearch(arr, value, breakpointIndex, toIndex)
     } else {
-        return findIndex(arr, value, fromIndex, breakpointIndex)
+        return binarySearch(arr, value, fromIndex, breakpointIndex)
     }
 
 }
 
-const position = findIndex(arr1, KEY, 0, arr1.length - 1);
+const position = binarySearch(arr1, KEY, 0, arr1.length - 1);
